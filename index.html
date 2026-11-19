@@ -1,110 +1,567 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello, World!</title>
-  <style>
-    :root {
-      --bg1: #0f172a;
-      --bg2: #1e1b4b;
-      --accent: #22d3ee;
-      --text: #e2e8f0;
-    }
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hello, World! — интерактивный витринный сайт</title>
+  <meta name="description" content="Один «Hello, World!» — и целый продукт: живой плейграунд темы, 20 языков программирования, палитра команд, демо-компоненты, PWA и метрики в реальном времени. Ноль зависимостей." />
+  <meta name="theme-color" content="#05070f" />
+  <link rel="canonical" href="https://kerpi4u.github.io/test/" />
 
-    * { box-sizing: border-box; }
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Hello, World! — интерактивная витрина" />
+  <meta property="og:description" content="Живой плейграунд темы, 20 языков, палитра команд, демо-компоненты, PWA и метрики. Ноль зависимостей." />
+  <meta property="og:url" content="https://kerpi4u.github.io/test/" />
+  <meta property="og:image" content="https://kerpi4u.github.io/test/assets/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Hello, World! — интерактивная витрина на чистом HTML, CSS и JavaScript" />
+  <meta property="og:site_name" content="hello.world" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Hello, World! — интерактивная витрина" />
+  <meta name="twitter:description" content="Живой плейграунд темы, 20 языков, палитра команд, демо-компоненты, PWA и метрики." />
+  <meta name="twitter:image" content="https://kerpi4u.github.io/test/assets/og-image.jpg" />
 
-    html, body {
-      height: 100%;
-      margin: 0;
-    }
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="./assets/favicon.svg" />
+  <link rel="manifest" href="./manifest.webmanifest" />
 
-    body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-      background: radial-gradient(circle at 20% 20%, var(--bg2), var(--bg1) 70%);
-      color: var(--text);
-      overflow: hidden;
-    }
+  <script>document.documentElement.classList.add("js");</script>
 
-    .card {
-      text-align: center;
-      padding: 3rem 4rem;
-      border-radius: 24px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
-      backdrop-filter: blur(8px);
-      animation: rise 0.9s ease-out both;
-    }
+  <link rel="stylesheet" href="./src/css/tokens.css" />
+  <link rel="stylesheet" href="./src/css/base.css" />
+  <link rel="stylesheet" href="./src/css/layout.css" />
+  <link rel="stylesheet" href="./src/css/components.css" />
+  <link rel="stylesheet" href="./src/css/animations.css" />
+  <link rel="stylesheet" href="./src/css/utilities.css" />
 
-    h1 {
-      margin: 0;
-      font-size: clamp(2.5rem, 9vw, 5rem);
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      background: linear-gradient(90deg, var(--accent), #a78bfa, #f472b6);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    p {
-      margin: 1.25rem 0 2rem;
-      font-size: 1.05rem;
-      color: #94a3b8;
-    }
-
-    button {
-      font: inherit;
-      font-weight: 600;
-      padding: 0.8rem 1.6rem;
-      border-radius: 999px;
-      border: 1px solid rgba(34, 211, 238, 0.5);
-      background: rgba(34, 211, 238, 0.12);
-      color: var(--accent);
-      cursor: pointer;
-      transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
-    }
-
-    button:hover {
-      background: rgba(34, 211, 238, 0.22);
-      box-shadow: 0 0 24px rgba(34, 211, 238, 0.35);
-      transform: translateY(-2px);
-    }
-
-    button:active { transform: translateY(0); }
-
-    #out {
-      margin-top: 1.5rem;
-      min-height: 1.5rem;
-      font-size: 1.1rem;
-      color: var(--accent);
-    }
-
-    @keyframes rise {
-      from { opacity: 0; transform: translateY(24px) scale(0.98); }
-      to   { opacity: 1; transform: translateY(0) scale(1); }
-    }
-  </style>
+  <script type="module" src="./src/js/main.js"></script>
 </head>
-<body>
-  <main class="card">
-    <h1>Hello, World!</h1>
-    <p>Простой статический сайт на чистом HTML, CSS и JavaScript.</p>
-    <button id="greet">Поздороваться 👋</button>
-    <div id="out" aria-live="polite"></div>
+<body id="top">
+  <div class="scroll-progress" aria-hidden="true"><span id="scroll-progress-bar"></span></div>
+
+  <a class="skip-link" href="#main" data-i18n="a11y.skip">Перейти к содержимому</a>
+
+  <canvas id="bg" aria-hidden="true"></canvas>
+  <div class="ambient" aria-hidden="true"></div>
+  <div class="ambient-grid" aria-hidden="true"></div>
+
+  <header class="site-header" id="header">
+    <a class="brand" href="#top" aria-label="Hello World — на главную">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 18l-6-6 6-6" /><path d="M15 6l6 6-6 6" />
+        </svg>
+      </span>
+      <span class="brand-name">hello<span class="brand-dot">.</span>world</span>
+    </a>
+
+    <nav class="site-nav" aria-label="Основная навигация" data-i18n-aria="nav.label">
+      <a href="#features" data-i18n="nav.features">Возможности</a>
+      <a href="#playground" data-i18n="nav.playground">Плейграунд</a>
+      <a href="#snippets" data-i18n="nav.snippets">Код</a>
+      <a href="#demos" data-i18n="nav.demos">Демо</a>
+      <a href="#metrics" data-i18n="nav.metrics">Метрики</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="icon-btn" id="cmd-open" type="button" aria-label="Открыть палитру команд" data-i18n-aria="a11y.palette" title="⌘K / Ctrl+K">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="7" /><path d="M20 20l-3.5-3.5" />
+        </svg>
+      </button>
+      <button class="icon-btn" id="lang-toggle" type="button" aria-label="Переключить язык" data-i18n-aria="a11y.lang" title="Русский / English">
+        <span id="lang-label">EN</span>
+      </button>
+      <button class="icon-btn" id="theme-toggle" type="button" aria-label="Переключить тему" data-i18n-aria="a11y.theme" aria-pressed="false">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ================= HERO ================= -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <span class="eyebrow" data-i18n="hero.badge">0 зависимостей · 100 Lighthouse</span>
+
+        <h1 class="hero-title" id="hero-title">Hello, <span class="grad">World</span>!</h1>
+        <div class="type-line" aria-hidden="true">
+          <span id="typewriter">console.log(&quot;Hello, World!&quot;)</span><span class="type-caret"></span>
+        </div>
+
+        <p class="hero-sub" data-i18n="hero.subtitle">
+          Тот самый первый скрипт — но как продукт: живой плейграунд темы, 20 языков, палитра команд,
+          демо-компоненты, офлайн-режим и метрики в реальном времени.
+        </p>
+
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#playground" data-i18n="hero.cta.primary">Открыть плейграунд</a>
+          <a class="btn btn-ghost" href="#demos" data-i18n="hero.cta.secondary">Посмотреть демо</a>
+          <button class="btn btn-ghost" id="hero-cmd" type="button">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="7" /><path d="M20 20l-3.5-3.5" />
+            </svg>
+            <span data-i18n="hero.cta.palette">Палитра команд</span>
+            <span class="kbd">⌘K</span>
+          </button>
+        </div>
+
+        <dl class="hero-stats">
+          <div><dt data-i18n="hero.stat.deps">Зависимости</dt><dd>0</dd></div>
+          <div><dt data-i18n="hero.stat.weight">JS + CSS</dt><dd>&lt; 40 KB</dd></div>
+          <div><dt data-i18n="hero.stat.langs">Языков</dt><dd>20</dd></div>
+          <div><dt data-i18n="hero.stat.a11y">Доступность</dt><dd>AA</dd></div>
+        </dl>
+      </div>
+
+      <div class="hero-visual reveal reveal-scale">
+        <div class="code-window float">
+          <div class="code-bar">
+            <span class="code-dots" aria-hidden="true"><span></span><span></span><span></span></span>
+            <span class="code-title">hello.js</span>
+            <button class="copy-btn" type="button" data-copy-target="hero-code" aria-label="Скопировать код" data-i18n-aria="a11y.copy">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="9" y="9" width="11" height="11" rx="2" /><path d="M5 15V5a2 2 0 0 1 2-2h10" />
+              </svg>
+              <span data-i18n="common.copy">Копировать</span>
+            </button>
+          </div>
+          <pre class="code-body"><code id="hero-code">// Самый честный Hello World
+const greeting = "Hello, World!";
+
+function say(text, { times = 1, loud = false } = {}) {
+  const message = loud ? text.toUpperCase() : text;
+  for (let i = 0; i < times; i++) console.log(message);
+}
+
+say(greeting, { times: 3, loud: true });
+// HELLO, WORLD! ×3</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FEATURES ================= -->
+    <section class="section" id="features" aria-labelledby="features-title">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-i18n="features.eyebrow">Что внутри</span>
+        <h2 class="section-title" id="features-title" data-i18n="features.title">Маленький сайт с большими амбициями</h2>
+        <p class="section-sub" data-i18n="features.subtitle">
+          Ни одного фреймворка, ни одного килобайта зависимостей — только платформа и аккуратная инженерия.
+        </p>
+      </div>
+
+      <div class="feature-grid">
+        <article class="card feature-card reveal">
+          <div class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z" /></svg>
+          </div>
+          <h3 data-i18n="features.f1.title">Мгновенно</h3>
+          <p data-i18n="features.f1.desc">Нативные ES-модули, zero-runtime, критический путь без блокирующих запросов.</p>
+          <span class="feature-tag">0 deps · 0 build</span>
+        </article>
+
+        <article class="card feature-card reveal" style="--d: 60ms">
+          <div class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9" /><path d="M12 8v8M8 12h8" /></svg>
+          </div>
+          <h3 data-i18n="features.f2.title">Живой плейграунд</h3>
+          <p data-i18n="features.f2.desc">Меняйте палитру, радиусы и свечение — и экспортируйте готовые CSS-переменные.</p>
+          <span class="feature-tag">design tokens</span>
+        </article>
+
+        <article class="card feature-card reveal" style="--d: 120ms">
+          <div class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6 3 12l5 6M16 6l5 6-5 6" /><path d="M13 4l-2 16" /></svg>
+          </div>
+          <h3 data-i18n="features.f3.title">20 языков</h3>
+          <p data-i18n="features.f3.desc">Один «Hello, World!» на двадцати языках — с подсветкой синтаксиса и копированием в один клик.</p>
+          <span class="feature-tag">highlight.js? нет</span>
+        </article>
+
+        <article class="card feature-card reveal" style="--d: 180ms">
+          <div class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2" /><path d="M8 21h8M12 18v3" /><path d="M7 9h4M7 13h7" /></svg>
+          </div>
+          <h3 data-i18n="features.f4.title">Палитра команд</h3>
+          <p data-i18n="features.f4.desc">⌘K / Ctrl+K — нечёткий поиск по действиям, стрелки, Enter и полная поддержка клавиатуры.</p>
+          <span class="feature-tag">fuzzy search</span>
+        </article>
+
+        <article class="card feature-card reveal" style="--d: 240ms">
+          <div class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1" /><circle cx="12" cy="12" r="3.4" /></svg>
+          </div>
+          <h3 data-i18n="features.f5.title">Тема и язык</h3>
+          <p data-i18n="features.f5.desc">Светлая и тёмная темы, русский и английский интерфейс — выбор запоминается и учитывает систему.</p>
+          <span class="feature-tag">prefers-color-scheme</span>
+        </article>
+
+        <article class="card feature-card reveal" style="--d: 300ms">
+          <div class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 9 9" /><path d="M12 7v5l3 2" /><path d="M18 3v4h4" /></svg>
+          </div>
+          <h3 data-i18n="features.f6.title">PWA и офлайн</h3>
+          <p data-i18n="features.f6.desc">Service worker кэширует оболочку: сайт открывается без сети и ставится на домашний экран.</p>
+          <span class="feature-tag">offline-first</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================= PLAYGROUND ================= -->
+    <section class="section" id="playground" aria-labelledby="playground-title">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-i18n="playground.eyebrow">Плейграунд</span>
+        <h2 class="section-title" id="playground-title" data-i18n="playground.title">Соберите свою тему за 20 секунд</h2>
+        <p class="section-sub" data-i18n="playground.subtitle">
+          Крутите ползунки — превью обновляется мгновенно. Готовый набор CSS-переменных копируется одной кнопкой.
+        </p>
+      </div>
+
+      <div class="playground-grid">
+        <div class="card controls reveal">
+          <div class="control-row">
+            <label class="control-label" for="pv-accent">
+              <span data-i18n="playground.accent">Акцент</span>
+              <small data-i18n="playground.accent.hint">основной цвет</small>
+            </label>
+            <input type="color" id="pv-accent" value="#22d3ee" />
+          </div>
+
+          <div class="control-row">
+            <label class="control-label" for="pv-accent2">
+              <span data-i18n="playground.accent2">Второй акцент</span>
+              <small data-i18n="playground.accent2.hint">для градиента</small>
+            </label>
+            <input type="color" id="pv-accent2" value="#a78bfa" />
+          </div>
+
+          <div class="control-row">
+            <label class="control-label" for="pv-bg">
+              <span data-i18n="playground.bg">Фон</span>
+              <small data-i18n="playground.bg.hint">подложка превью</small>
+            </label>
+            <input type="color" id="pv-bg" value="#0b1020" />
+          </div>
+
+          <div class="control-row">
+            <label class="control-label" for="pv-text">
+              <span data-i18n="playground.text">Текст</span>
+              <small data-i18n="playground.text.hint">основной цвет</small>
+            </label>
+            <input type="color" id="pv-text" value="#e9edf7" />
+          </div>
+
+          <div class="control-row">
+            <label class="control-label" for="pv-radius">
+              <span data-i18n="playground.radius">Скругление</span>
+              <small><span id="radius-value">18</span> px</small>
+            </label>
+            <input type="range" id="pv-radius" min="0" max="36" value="18" />
+          </div>
+
+          <div class="control-row">
+            <label class="control-label" for="pv-glow">
+              <span data-i18n="playground.glow">Свечение</span>
+              <small><span id="glow-value">50</span>%</small>
+            </label>
+            <input type="range" id="pv-glow" min="0" max="100" value="50" />
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="row">
+            <button class="btn btn-sm btn-primary" id="pv-random" type="button" data-i18n="playground.random">Случайная тема</button>
+            <button class="btn btn-sm btn-ghost" id="pv-reset" type="button" data-i18n="playground.reset">Сбросить</button>
+            <button class="btn btn-sm btn-ghost" id="pv-copy" type="button" data-i18n="playground.copy">Скопировать CSS</button>
+          </div>
+        </div>
+
+        <div class="preview reveal" id="preview" aria-label="Превью темы" data-i18n-aria="playground.preview.label">
+          <span class="preview-badge" data-i18n="playground.preview.badge">live preview</span>
+          <h3 data-i18n="playground.preview.title">Ваша тема готова</h3>
+          <p data-i18n="playground.preview.text">
+            Так будет выглядеть интерфейс с выбранными токенами: акценты, фон, радиусы и мягкое свечение.
+          </p>
+          <div class="preview-actions">
+            <button class="preview-btn" type="button" data-i18n="playground.preview.primary">Основное действие</button>
+            <button class="preview-ghost" type="button" data-i18n="playground.preview.secondary">Вторичное</button>
+          </div>
+          <div class="preview-swatch" aria-hidden="true">
+            <i style="background: var(--pv-accent)"></i>
+            <i style="background: var(--pv-accent-2)"></i>
+            <i style="background: color-mix(in oklab, var(--pv-accent) 45%, var(--pv-bg))"></i>
+            <i style="background: color-mix(in oklab, var(--pv-text) 18%, var(--pv-bg))"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SNIPPETS ================= -->
+    <section class="section" id="snippets" aria-labelledby="snippets-title">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-i18n="snippets.eyebrow">Коллекция</span>
+        <h2 class="section-title" id="snippets-title" data-i18n="snippets.title">Один Hello World — двадцать языков</h2>
+        <p class="section-sub" data-i18n="snippets.subtitle">
+          Подсветка синтаксиса написана вручную, без единой библиотеки. Выберите язык, скопируйте код, запустите у себя.
+        </p>
+      </div>
+
+      <div class="stack reveal">
+        <div class="row-between">
+          <div class="tabs" id="lang-tabs" role="tablist" aria-label="Языки программирования" data-i18n-aria="snippets.tabs"></div>
+          <button class="btn btn-sm btn-ghost" id="snippet-random" type="button" data-i18n="snippets.random">Случайный язык</button>
+        </div>
+
+        <div class="code-window">
+          <div class="code-bar">
+            <span class="code-dots" aria-hidden="true"><span></span><span></span><span></span></span>
+            <span class="code-title" id="snippet-file">hello.js</span>
+            <button class="copy-btn" type="button" data-copy-target="snippet-code" aria-label="Скопировать код" data-i18n-aria="a11y.copy">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="9" y="9" width="11" height="11" rx="2" /><path d="M5 15V5a2 2 0 0 1 2-2h10" />
+              </svg>
+              <span data-i18n="common.copy">Копировать</span>
+            </button>
+          </div>
+          <pre class="code-body"><code id="snippet-code"></code></pre>
+        </div>
+
+        <p class="small muted" data-i18n="snippets.note">
+          Совет: нажмите ⌘K / Ctrl+K и введите название языка — палитра найдёт его сама.
+        </p>
+      </div>
+    </section>
+
+    <!-- ================= DEMOS ================= -->
+    <section class="section" id="demos" aria-labelledby="demos-title">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-i18n="demos.eyebrow">Демо</span>
+        <h2 class="section-title" id="demos-title" data-i18n="demos.title">Компоненты, которые не стыдно показать</h2>
+        <p class="section-sub" data-i18n="demos.subtitle">
+          Валидация формы, тосты, прогресс со скелетоном и модальное окно с ловушкой фокуса — всё на чистом DOM API.
+        </p>
+      </div>
+
+      <div class="feature-grid">
+        <!-- Form -->
+        <article class="card reveal">
+          <h3 data-i18n="demos.form.title">Валидация формы</h3>
+          <p class="small muted mt-1" data-i18n="demos.form.desc">Проверка на лету, понятные сообщения, состояние кнопки.</p>
+          <form class="stack mt-2" id="demo-form" novalidate>
+            <div class="field" id="field-name">
+              <label for="f-name" data-i18n="demos.form.name">Имя</label>
+              <input type="text" id="f-name" name="name" autocomplete="name" placeholder="Ада Лавлейс" data-i18n-placeholder="demos.form.name.ph" />
+              <span class="error" id="err-name"></span>
+            </div>
+            <div class="field" id="field-email">
+              <label for="f-email" data-i18n="demos.form.email">E-mail</label>
+              <input type="email" id="f-email" name="email" autocomplete="email" placeholder="ada@example.com" data-i18n-placeholder="demos.form.email.ph" />
+              <span class="error" id="err-email"></span>
+            </div>
+            <div class="row">
+              <button class="btn btn-primary btn-sm" type="submit" data-i18n="demos.form.submit">Отправить</button>
+              <button class="btn btn-ghost btn-sm" type="reset" data-i18n="demos.form.reset">Очистить</button>
+            </div>
+          </form>
+        </article>
+
+        <!-- Toasts -->
+        <article class="card reveal" style="--d: 60ms">
+          <h3 data-i18n="demos.toast.title">Тосты</h3>
+          <p class="small muted mt-1" data-i18n="demos.toast.desc">Четыре состояния, авто-скрытие и очередь уведомлений.</p>
+          <div class="row mt-2">
+            <button class="btn btn-sm btn-ghost" type="button" data-toast="success" data-i18n="demos.toast.success">Успех</button>
+            <button class="btn btn-sm btn-ghost" type="button" data-toast="info" data-i18n="demos.toast.info">Инфо</button>
+            <button class="btn btn-sm btn-ghost" type="button" data-toast="warn" data-i18n="demos.toast.warn">Внимание</button>
+            <button class="btn btn-sm btn-ghost" type="button" data-toast="error" data-i18n="demos.toast.error">Ошибка</button>
+          </div>
+          <div class="divider"></div>
+          <p class="small muted" data-i18n="demos.toast.hint">Тосты появляются в правом нижнем углу и не блокируют интерфейс.</p>
+        </article>
+
+        <!-- Progress -->
+        <article class="card reveal" style="--d: 120ms">
+          <h3 data-i18n="demos.progress.title">Прогресс и скелетон</h3>
+          <p class="small muted mt-1" data-i18n="demos.progress.desc">Детерминированный прогресс и состояние загрузки контента.</p>
+          <div class="stack mt-2">
+            <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progress" aria-label="Прогресс демонстрации">
+              <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <div class="row">
+              <button class="btn btn-sm btn-primary" type="button" id="progress-run" data-i18n="demos.progress.run">Запустить</button>
+              <button class="btn btn-sm btn-ghost" type="button" id="skeleton-toggle" data-i18n="demos.progress.skeleton">Скелетон</button>
+            </div>
+            <div class="skeleton" id="skeleton" hidden aria-hidden="true">
+              <div class="skeleton-line"></div>
+              <div class="skeleton-line"></div>
+              <div class="skeleton-line"></div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Modal -->
+        <article class="card reveal" style="--d: 180ms">
+          <h3 data-i18n="demos.modal.title">Модальное окно</h3>
+          <p class="small muted mt-1" data-i18n="demos.modal.desc">Нативный &lt;dialog&gt;: фокус-трап, Esc, возврат фокуса.</p>
+          <div class="row mt-2">
+            <button class="btn btn-sm btn-primary" type="button" id="modal-open" data-i18n="demos.modal.open">Открыть окно</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================= METRICS ================= -->
+    <section class="section" id="metrics" aria-labelledby="metrics-title">
+      <div class="section-head reveal">
+        <span class="eyebrow" data-i18n="metrics.eyebrow">Телеметрия</span>
+        <h2 class="section-title" id="metrics-title" data-i18n="metrics.title">Метрики в реальном времени</h2>
+        <p class="section-sub" data-i18n="metrics.subtitle">
+          Никакой аналитики и трекеров — только Performance API в вашем браузере, прямо сейчас.
+        </p>
+      </div>
+
+      <div class="metric-grid">
+        <div class="card metric-card reveal">
+          <dt data-i18n="metrics.fps">Кадры в секунду</dt>
+          <dd class="metric-value"><span id="m-fps">60</span><small>fps</small></dd>
+          <span class="metric-note" data-i18n="metrics.fps.note">рендеринг requestAnimationFrame</span>
+          <canvas class="spark" id="fps-spark" aria-hidden="true"></canvas>
+        </div>
+
+        <div class="card metric-card reveal" style="--d: 60ms">
+          <dt data-i18n="metrics.load">Загрузка страницы</dt>
+          <dd class="metric-value"><span id="m-load">0</span><small>ms</small></dd>
+          <span class="metric-note" data-i18n="metrics.load.note">от navigationStart до loadEventEnd</span>
+        </div>
+
+        <div class="card metric-card reveal" style="--d: 120ms">
+          <dt data-i18n="metrics.payload">Передано ресурсов</dt>
+          <dd class="metric-value"><span id="m-payload">0</span><small>KB</small></dd>
+          <span class="metric-note" data-i18n="metrics.payload.note">суммарный transferSize</span>
+        </div>
+
+        <div class="card metric-card reveal" style="--d: 180ms">
+          <dt data-i18n="metrics.nodes">Узлов DOM</dt>
+          <dd class="metric-value"><span id="m-nodes">0</span></dd>
+          <span class="metric-note" data-i18n="metrics.nodes.note">document.querySelectorAll('*').length</span>
+        </div>
+      </div>
+
+      <p class="metrics-foot row">
+        <span class="status" data-i18n="metrics.live">обновляется каждую секунду</span>
+        <span aria-hidden="true">·</span>
+        <span class="mono" id="m-env">—</span>
+      </p>
+    </section>
   </main>
 
-  <script>
-    const out = document.getElementById("out");
-    const greetings = ["Привет!", "Hello!", "Hola!", "Bonjour!", "Ciao!", "Привет из JavaScript ✨"];
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="brand" href="#top">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 18l-6-6 6-6" /><path d="M15 6l6 6-6 6" />
+            </svg>
+          </span>
+          <span class="brand-name">hello<span class="brand-dot">.</span>world</span>
+        </a>
+        <p data-i18n="footer.tagline">Демонстрация того, что можно сделать без фреймворков — аккуратно, быстро и с уважением к пользователю.</p>
+      </div>
 
-    document.getElementById("greet").addEventListener("click", () => {
-      out.textContent = greetings[Math.floor(Math.random() * greetings.length)];
-    });
-  </script>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h3 data-i18n="footer.col.project">Проект</h3>
+          <ul>
+            <li><a href="https://github.com/kerpi4u/test" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href="https://github.com/kerpi4u/test/blob/main/README.md" target="_blank" rel="noopener noreferrer">README</a></li>
+            <li><a href="https://github.com/kerpi4u/test/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">MIT License</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3 data-i18n="footer.col.stack">Стек</h3>
+          <ul>
+            <li>Vanilla JS (ES modules)</li>
+            <li>Modern CSS</li>
+            <li>Service Worker</li>
+            <li>GitHub Actions</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3 data-i18n="footer.col.actions">Быстрые действия</h3>
+          <ul>
+            <li><a href="#playground" data-i18n="nav.playground">Плейграунд</a></li>
+            <li><a href="#demos" data-i18n="nav.demos">Демо</a></li>
+            <li><a href="#metrics" data-i18n="nav.metrics">Метрики</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© <span id="year">2026</span> hello.world</span>
+      <span data-i18n="footer.made">Сделано вручную · 0 зависимостей · 100 Lighthouse</span>
+    </div>
+  </footer>
+
+  <!-- Command palette -->
+  <div class="palette" id="palette" hidden role="dialog" aria-modal="true" aria-labelledby="palette-title">
+    <div class="palette-panel">
+      <h2 id="palette-title" class="sr-only" data-i18n="palette.title">Палитра команд</h2>
+      <div class="palette-search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="7" /><path d="M20 20l-3.5-3.5" />
+        </svg>
+        <input class="palette-input" id="palette-input" type="text" role="combobox" aria-expanded="true"
+               aria-controls="palette-list" aria-autocomplete="list" autocomplete="off" spellcheck="false"
+               placeholder="Найти действие или раздел…" data-i18n-placeholder="palette.placeholder" />
+        <span class="kbd">esc</span>
+      </div>
+      <ul class="palette-list" id="palette-list" role="listbox" aria-labelledby="palette-title"></ul>
+      <div class="palette-empty" id="palette-empty" hidden data-i18n="palette.empty">Ничего не найдено — попробуйте другой запрос.</div>
+      <div class="palette-footer">
+        <span><span class="kbd">↑</span><span class="kbd">↓</span> <span data-i18n="palette.hint.nav">навигация</span></span>
+        <span><span class="kbd">↵</span> <span data-i18n="palette.hint.select">выбрать</span></span>
+        <span><span class="kbd">esc</span> <span data-i18n="palette.hint.close">закрыть</span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dialog -->
+  <dialog id="demo-modal" aria-labelledby="demo-modal-title">
+    <div class="dialog-head">
+      <h2 id="demo-modal-title" data-i18n="demos.modal.heading">Привет из &lt;dialog&gt;</h2>
+      <button class="icon-btn" type="button" id="modal-close" aria-label="Закрыть" data-i18n-aria="a11y.close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" /></svg>
+      </button>
+    </div>
+    <div class="dialog-body">
+      <p data-i18n="demos.modal.body">
+        Это нативный элемент dialog: браузер сам удерживает фокус внутри, закрывает по Esc и возвращает фокус на кнопку.
+      </p>
+      <label class="field">
+        <span class="small muted" data-i18n="demos.modal.input">Проверьте ловушку фокуса — Tab не выйдет наружу</span>
+        <input type="text" placeholder="hello@example.com" />
+      </label>
+    </div>
+    <div class="dialog-foot">
+      <button class="btn btn-sm btn-ghost" type="button" id="modal-cancel" data-i18n="common.close">Закрыть</button>
+      <button class="btn btn-sm btn-primary" type="button" id="modal-ok" data-i18n="demos.modal.ok">Понятно</button>
+    </div>
+  </dialog>
+
+  <!-- Toasts -->
+  <div class="toast-stack" id="toasts" role="status" aria-live="polite" aria-atomic="false"></div>
+
+  <noscript>
+    <p style="position:relative;z-index:2;padding:1rem;text-align:center">
+      Для интерактивных демонстраций нужен JavaScript, но весь контент доступен и без него.
+    </p>
+  </noscript>
 </body>
 </html>

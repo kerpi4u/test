@@ -1,0 +1,15 @@
+# dependencies (none in production, dev tooling only)
+node_modules/
+
+# logs & OS noise
+*.log
+.DS_Store
+Thumbs.db
+
+# editors
+.vscode/
+.idea/
+
+# test & build output
+coverage/
+dist/

@@ -1,0 +1,21 @@
+{
+  "name": "hello-world-showcase",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A dependency-free Hello World showcase: live theme playground, 20 languages, command palette, demos, PWA and metrics.",
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/serve.js",
+    "start": "node scripts/serve.js",
+    "lint": "node scripts/lint.js",
+    "test": "node --test tests/*.test.js",
+    "check": "npm run lint && npm test"
+  },
+  "keywords": [
+    "hello-world",
+    "vanilla-js",
+    "pwa",
+    "showcase"
+  ],
+  "license": "MIT"
+}
